@@ -71,9 +71,6 @@ class Dataset():
         self.xaxis(self.Qx)
         self.output(self.Qx, 'Qx Graph', 'Qx values', 'Years')
 
-mydataset = Dataset()
-mydataset.output(mydataset.Nx, 'Nx')
-
 class InputFile():
 
     def __init__(self, file_name):
