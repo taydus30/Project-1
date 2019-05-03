@@ -17,8 +17,9 @@ Nx = [starting_population]
 lx = []
 dx = []
 qx = []
+
+#Data collected from https://onlinelibrary.wiley.com/doi/pdf/10.1046/j.1526-100x.2000.80067.x
 deathrates = [.65, .90, .90, .91, .91, .91, .91, .91, .75]
-# Takes user input for the data
 
 for i in range(iterations):
     if i <= len(deathrates) - 1:
