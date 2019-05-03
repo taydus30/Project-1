@@ -9,6 +9,21 @@ class Dataset():
         self.Dx = None
         self.Qx = None
 
-    def output(self):
+    def xaxis (self, data):
+        x = []
+
+        for i in range(len(data)):
+            x.append(i)
+
+        return x
+
+    def output(self, data, title):
         #show pyplot
-        print('oout')
+        x = self.xaxis(data)
+        plt.plot(x, data)
+        plt.xlabel('X')
+        plt.ylabel(title + ' Values')
+        plt.show()
+
+mydataset = Dataset()
+mydataset.output(mydataset.Nx, 'Nx')
