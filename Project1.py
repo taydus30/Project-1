@@ -67,8 +67,9 @@ def xaxis (data):
 # This is how you create and print the graph
 xaxis(Nx)
 plt.plot(x, Nx)
-plt.xlabel('X')
-plt.ylabel('Nx Values')
+plt.title('Population Over Time')
+plt.xlabel('Years')
+plt.ylabel('Population')
 plt.show()
 
 xaxis(lx)
