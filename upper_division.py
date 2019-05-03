@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+import os.path
+import json
 
 class Dataset():
 
@@ -25,5 +27,20 @@ class Dataset():
         plt.ylabel(title + ' Values')
         plt.show()
 
-mydataset = Dataset()
-mydataset.output(mydataset.Nx, 'Nx')
+class InputFile():
+
+    def __init__(self, file_name):
+        f = None
+        if(os.path.isfile(file_name)):
+            f = json.load(file_name)
+        else:
+            string(input('Improper File Path!'))
+
+class Generation():
+
+    def __init__(self):
+        self.age = 0;
+        self.population = 0;
+
+    def update(self):
+        self.age += 1
