@@ -6,6 +6,7 @@ Created on Tue Apr  9 13:00:25 2019
 """
 from tabulate import tabulate
 import matplotlib.pyplot as plt
+<<<<<<< HEAD
 
 starting_population = int(input('Starting population: \n'))
 print('')
@@ -14,6 +15,10 @@ print('')
 iterations = int(input('How many years: \n'))
 print('')
 
+=======
+starting_population = int(input('starting population' ))
+mortality_rate = float(input('enter mortalityrate' ))
+>>>>>>> 4fab76f3f63f3d341e2bb5337beb655020147457
 #Nx = [314, 198, 89, 39, 28, 27, 24, 23, 20, 8, 4, 4, 2, 2, 1, 0]
 Nx = [starting_population]
 lx = []
