@@ -1,3 +1,8 @@
+"""
+Creators: Dustyn, Tucker
+Date Created: May 2nd 2019
+"""
+
 import upper_division as ud
 
 set = ud.Settings()
