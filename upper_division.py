@@ -1,3 +1,8 @@
+"""
+Creators: Dustyn, Tucker
+Date Created: May 2nd 2019
+"""
+
 import matplotlib.pyplot as plt
 import os.path
 import json
