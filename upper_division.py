@@ -1,19 +1,21 @@
 import matplotlib.pyplot as plt
 import os.path
 import json
+from tabulate import tabulate
 
 class Dataset():
 
-    def __init__(self, nx):
+    def __init__(self, species):
         """ The Dataset is a collection of calculated data and visualization
         -----
         nx : int array
             uses an array of population over data
         """
-        self.Nx = nx
-        self.Lx = None
-        self.Dx = None
-        self.Qx = None
+        self.Nx = species.pop_over_time
+        self.species_name = species.name
+        self.calcLx()
+        self.calcDx()
+        self.calcQx()
 
     def xaxis (self, data):
         """ Calculates an array for the xaxis of the graphs
@@ -28,7 +30,7 @@ class Dataset():
 
         return x
 
-    def output(self, data, title, xlable, ylable):
+    def output(self, data, title, ylable, xlable):
         """ Creates and shows a graph of given data
         -----
         data : int array
@@ -43,7 +45,7 @@ class Dataset():
         #show pyplot
         x = self.xaxis(data)
         plt.plot(x, data)
-        plt.title(title)
+        plt.title(title + ": " + self.species_name)
         plt.xlabel(xlable)
         plt.ylabel(ylable)
         plt.show()
@@ -77,7 +79,7 @@ class Dataset():
         """
         Table = []
 
-        for i in range(len(Nx)):
+        for i in range(len(self.Nx)):
             try:
                 Table.append([self.Nx[i],round(self.Lx[i], 3),round(self.Dx[i],3),round(self.Qx[i],3)])
             except IndexError:
@@ -105,8 +107,7 @@ class Dataset():
 class Settings():
 
     def __init__(self):
-        """
-        Holds information used by Generations and Species
+        """Holds information used by Generations and Species
         -----
 
         """
@@ -156,15 +157,15 @@ class Generation():
         fecundity : float array
             from Settings object
         """
-        upper_d = len(death_rates) - 1
+        upper_d = len(death_rates) -1
         upper_f = len(fecundity) - 1
         new_pop = 0
-        if(age > upper_f):
-            new_pop = self.population / 2 * fecundity[age]
+        if(self.age < upper_f):
+            new_pop = self.population / 2 * fecundity[self.age]
         else:
-            new_pop = self.population / 2 * fecundity[age]
-        if(age > upper_d):
-            self.population = self.population * death_rates[age]
+            new_pop = self.population / 2 * fecundity[-1]
+        if(self.age < upper_d):
+            self.population = self.population * death_rates[self.age]
         else:
             self.population = self.population * death_rates[-1]
         self.age += 1
@@ -172,23 +173,21 @@ class Generation():
 
 class Species():
     def __init__(self, settings):
-    """
-    Container for multiple generations of a population
-    Parameters
-    ----------
-    settings : Settings
-        Settings object containing needed json
-    """
+        """Container for multiple generations of a population
+        -------
+        settings : Settings
+            Settings object containing needed json
+        """
 
-    self.pop_over_time = []
-    self.name = settings.name
-    self.generations = [Generation(settings.starting_population)]
-    for i in range(settings.iterations):
-        total = 0
-        for g in self.generations:
-            total += g.population
-        self.pop_over_time.append(total)
-        for p in range(len(self.generations) - 1):
-            new_pop = self.generations[p].update()
-            if(new_pop.population > 0):
-                self.generations.append(new_pop)
+        self.pop_over_time = []
+        self.name = settings.name
+        self.generations = [Generation(settings.starting_population)]
+        for i in range(settings.iterations):
+            total = 0
+            for g in self.generations:
+                total += g.population
+            self.pop_over_time.append(total)
+            for p in range(len(self.generations)):
+                new_pop = self.generations[p].update(settings.death_rates, settings.fecundity)
+                if(new_pop.population > 0):
+                    self.generations.append(new_pop)
