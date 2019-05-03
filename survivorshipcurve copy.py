@@ -4,7 +4,6 @@
 Created on Tue Apr  9 13:00:25 2019
 @author: dustyntaylor, tucker, tyrese
 """
-import os.path.isfile
 from tabulate import tabulate
 import matplotlib.pyplot as plt
 
