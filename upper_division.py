@@ -71,30 +71,41 @@ class Dataset():
         self.xaxis(self.Qx)
         self.output(self.Qx, 'Qx Graph', 'Qx values', 'Years')
 
-<<<<<<< HEAD
 class Settings():
 
     def __init__(self):
         self.json = None
-=======
-class InputFile():
->>>>>>> 2cd4a5b740ee57717f076773d1ea833f588c2806
+        self.starting_population = None
+        self.iterations = None
+        self.death_rates = None
+        self.fecundity = None
 
-    def from_file(self, file_name):
+    def from_file(self, file_name = ""):
+        """ Reads Json file and sets properties according
+        -----
+        file_name : string
+            file path of your json file
+        """
         f = None
         if(os.path.isfile(file_name)):
-            f = json.load(file_name)
+            file = open(file_name)
+            self.json = json.load(file)
+            self.starting_population = self.json['starting_population']
+            self.iterations = self.json['iterations']
+            self.death_rates = self.json['death_rates']
+
         else:
-            string(input('Improper File Path!'))
+            print('Improper File Path!')
 
     def valid(self):
         return(self.json != None)
 
 class Generation():
 
-    def __init__(self):
+    def __init__(self, starting_population):
         self.age = 0;
-        self.population = 0;
+        self.population = starting_population;
 
-    def update(self):
+    def update(self, settings):
+        settings.death_rates[age]
         self.age += 1
