@@ -19,7 +19,7 @@ dx = []
 qx = []
 
 # Takes user input for the data
-Nxdata = eval(input('Enter your Nx data separated by commas (Ex. 1, 2, 3) '))
+Nxdata = eval(input('Enter your Nx data separated by commas (Ex. 1, 2, 3) \n>'))
 
 for i in Nxdata:
     Nx.append(i)
@@ -46,9 +46,7 @@ for i in range(len(Nx)):
         Table.append([Nx[i], round(lx[i],3), '...', '...'])
 
 # Adds whitespace
-print('')
-print('')
-print('')
+print('\n\n\n')
 
 # Creates and Prints the table of values
 print(tabulate(Table, headers = ['Nx', 'lx', 'dx', 'qx']))
