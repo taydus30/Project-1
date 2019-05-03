@@ -9,19 +9,16 @@ import matplotlib.pyplot as plt
 
 starting_population = int(input('Starting population: \n'))
 print('')
-#mortality_rate = float(input('Enter mortality rate: \n'))
-#print('')
+
 iterations = int(input('How many years: \n'))
 print('')
 
-#Nx = [314, 198, 89, 39, 28, 27, 24, 23, 20, 8, 4, 4, 2, 2, 1, 0]
 Nx = [starting_population]
 lx = []
 dx = []
 qx = []
 deathrates = [.65, .90, .90, .91, .91, .91, .91, .91, .75]
 # Takes user input for the data
-#Nxdata = eval(input('Enter your Nx data separated by commas (Ex. 1, 2, 3) \n>'))
 
 for i in range(iterations):
     if i <= len(deathrates) - 1:
