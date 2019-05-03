@@ -1,3 +1,14 @@
-import sys
+import matplotlib.pyplot as plt
 
-print("the script has the name %s" % (sys.argv[1]) )
+class Dataset():
+
+    def __init__(self, nx):
+        self.Nx = nx
+
+        self.Lx = None
+        self.Dx = None
+        self.Qx = None
+
+    def output(self):
+        #show pyplot
+        print('oout')
