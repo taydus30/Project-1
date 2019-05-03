@@ -3,7 +3,7 @@
 """
 Created on Tue Apr  9 13:00:25 2019
 
-@author: dustyntaylor, tucker, tyrese
+@author: dustyntaylor, tucker, tyrese 
 """
 from tabulate import tabulate
 import matplotlib.pyplot as plt
