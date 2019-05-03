@@ -9,19 +9,17 @@ import matplotlib.pyplot as plt
 
 starting_population = int(input('Starting population: \n'))
 print('')
-#mortality_rate = float(input('Enter mortality rate: \n'))
-#print('')
+
 iterations = int(input('How many years: \n'))
 print('')
 
-#Nx = [314, 198, 89, 39, 28, 27, 24, 23, 20, 8, 4, 4, 2, 2, 1, 0]
 Nx = [starting_population]
 lx = []
 dx = []
 qx = []
+
+#Data collected from https://onlinelibrary.wiley.com/doi/pdf/10.1046/j.1526-100x.2000.80067.x
 deathrates = [.65, .90, .90, .91, .91, .91, .91, .91, .75]
-# Takes user input for the data
-#Nxdata = eval(input('Enter your Nx data separated by commas (Ex. 1, 2, 3) \n>'))
 
 for i in range(iterations):
     if i <= len(deathrates) - 1:
@@ -69,8 +67,9 @@ def xaxis (data):
 # This is how you create and print the graph
 xaxis(Nx)
 plt.plot(x, Nx)
-plt.xlabel('X')
-plt.ylabel('Nx Values')
+plt.title('Population Over Time')
+plt.xlabel('Years')
+plt.ylabel('Population')
 plt.show()
 
 xaxis(lx)
