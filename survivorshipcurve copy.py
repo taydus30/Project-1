@@ -7,14 +7,8 @@ Created on Tue Apr  9 13:00:25 2019
 import os.path.isfile
 from tabulate import tabulate
 import matplotlib.pyplot as plt
-
-starting_population = int(input('starting population: \n'))
-print('')
-mortality_rate = float(input('enter mortality rate: \n'))
-print('')
-iterations = int(input('How many years: \n'))
-print('')
-
+starting_population = int(input('starting population' ))
+mortality_rate = float(input('enter mortalityrate' ))
 #Nx = [314, 198, 89, 39, 28, 27, 24, 23, 20, 8, 4, 4, 2, 2, 1, 0]
 Nx = []
 lx = []
