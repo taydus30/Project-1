@@ -71,17 +71,20 @@ class Dataset():
         self.xaxis(self.Qx)
         self.output(self.Qx, 'Qx Graph', 'Qx values', 'Years')
 
-mydataset = Dataset()
-mydataset.output(mydataset.Nx, 'Nx')
+class Settings():
 
-class InputFile():
+    def __init__(self):
+        self.json = None
 
-    def __init__(self, file_name):
+    def from_file(self, file_name):
         f = None
         if(os.path.isfile(file_name)):
             f = json.load(file_name)
         else:
             string(input('Improper File Path!'))
+
+    def valid(self):
+        return(self.json != None)
 
 class Generation():
 
