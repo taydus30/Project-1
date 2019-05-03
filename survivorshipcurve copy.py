@@ -3,7 +3,7 @@
 """
 Created on Tue Apr  9 13:00:25 2019
 
-@author: dustyntaylor
+@author: dustyntaylor, tucker, tyrese
 """
 from tabulate import tabulate
 import matplotlib.pyplot as plt
@@ -20,11 +20,11 @@ Nxdata = eval(input('Enter your Nx data separated by commas (Ex. 1, 2, 3) '))
 for i in Nxdata:
     Nx.append(i)
 
- 
+
 # Calculates the lx values and appends to lx[]
 for i in range (len(Nx)):
     lx.append(Nx[i]/Nx[0])
- 
+
 # Calculates the dx values and appends to dx[]
 for i in range(len(lx)-1):
     dx.append(lx[i]-lx[i+1])
@@ -32,7 +32,7 @@ for i in range(len(lx)-1):
 # Calculates the qx values and appends to qx[]
 for i in range (len(dx)):
     qx.append(dx[i]/lx[i])
-    
+
 # Creates a list of lists for the tabluate function out of the Nx,lx,dx,qx lists
 Table = []
 
@@ -41,13 +41,13 @@ for i in range(len(Nx)):
         Table.append([Nx[i],round(lx[i], 3),round(dx[i],3),round(qx[i],3)])
     except IndexError:
         Table.append([Nx[i], round(lx[i],3), '...', '...'])
-   
-# Adds whitespace 
+
+# Adds whitespace
 print('')
 print('')
 print('')
 
-# Creates and Prints the table of values     
+# Creates and Prints the table of values
 print(tabulate(Table, headers = ['Nx', 'lx', 'dx', 'qx']))
 
 # This function creates a list of valuse for your x-axis based on the data you
@@ -55,10 +55,10 @@ print(tabulate(Table, headers = ['Nx', 'lx', 'dx', 'qx']))
 def xaxis (data):
     global x
     x = []
-    
+
     for i in range(len(data)):
         x.append(i)
-        
+
 # This is how you create and print the graph
 xaxis(Nx)
 plt.plot(x, Nx)
