@@ -6,7 +6,9 @@ Created on Tue Apr  9 13:00:25 2019
 """
 from tabulate import tabulate
 import matplotlib.pyplot as plt
-
+starting_population = int(input('starting population' :))
+common_deaths = int(input('how many passed' :)
+mortality_rate = float(input('enter mortality rate' :))
 #Nx = [314, 198, 89, 39, 28, 27, 24, 23, 20, 8, 4, 4, 2, 2, 1, 0]
 Nx = []
 lx = []
