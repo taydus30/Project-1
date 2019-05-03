@@ -1,0 +1,8 @@
+{
+  "name":"Big Horn Sheep",
+  "source":"https://onlinelibrary.wiley.com/doi/pdf/10.1046/j.1526-100x.2000.80067.x",
+  "starting_population": 500,
+  "iterations": 15,
+  "death_rates": [.215, .97, .97, .87, .87, .87, .87, .87, .805],
+  "fecundity": [.67, .0, .0, .71, .71, .71, .71, .71, .58, .58, .58, .58, .58, .58],
+}
