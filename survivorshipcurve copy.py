@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Apr  9 13:00:25 2019
-
-@author: dustyntaylor, tucker, tyrese 
+@author: dustyntaylor, tucker, tyrese
 """
 from tabulate import tabulate
 import matplotlib.pyplot as plt
@@ -19,7 +18,6 @@ Nxdata = eval(input('Enter your Nx data separated by commas (Ex. 1, 2, 3) '))
 
 for i in Nxdata:
     Nx.append(i)
-
 
 # Calculates the lx values and appends to lx[]
 for i in range (len(Nx)):
