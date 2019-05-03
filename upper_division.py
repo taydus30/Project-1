@@ -74,7 +74,13 @@ class Dataset():
 class Settings():
 
     def __init__(self):
+        """
+        Holds information used by Generations and Species
+        -----
+
+        """
         self.json = None
+        self.name = None
         self.starting_population = None
         self.iterations = None
         self.death_rates = None
@@ -93,7 +99,8 @@ class Settings():
             self.starting_population = self.json['starting_population']
             self.iterations = self.json['iterations']
             self.death_rates = self.json['death_rates']
-
+            self.fecundity = self.json['fecundity']
+            self.name = self.json['name']
         else:
             print('Improper File Path!')
 
@@ -103,9 +110,54 @@ class Settings():
 class Generation():
 
     def __init__(self, starting_population):
+        """Contains one generation of a creature and methods that update it
+        -----
+        starting_population : int
+        """
         self.age = 0;
         self.population = starting_population;
 
-    def update(self, settings):
-        settings.death_rates[age]
+    def update(self, death_rates, fecundity):
+        """Reads Json file and sets properties accordingly
+        -----
+        death_rates : float array
+            from Settings object
+        fecundity : float array
+            from Settings object
+        """
+        upper_d = len(death_rates) - 1
+        upper_f = len(fecundity) - 1
+        new_pop = 0
+        if(age > upper_f):
+            new_pop = self.population / 2 * fecundity[age]
+        else:
+            new_pop = self.population / 2 * fecundity[age]
+        if(age > upper_d):
+            self.population = self.population * death_rates[age]
+        else:
+            self.population = self.population * death_rates[-1]
         self.age += 1
+        return(Generation(new_pop))
+
+class Species():
+    def __init__(self, settings):
+    """
+    Container for multiple generations of a population
+    Parameters
+    ----------
+    settings : Settings
+        Settings object containing needed json
+    """
+
+    self.pop_over_time = []
+    self.name = settings.name
+    self.generations = [Generation(settings.starting_population)]
+    for i in range(settings.iterations):
+        total = 0
+        for g in self.generations:
+            total += g.population
+        self.pop_over_time.append(total)
+        for p in range(len(self.generations) - 1):
+            new_pop = self.generations[p].update()
+            if(new_pop.population > 0):
+                self.generations.append(new_pop)
