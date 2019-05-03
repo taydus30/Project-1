@@ -71,10 +71,14 @@ class Dataset():
         self.xaxis(self.Qx)
         self.output(self.Qx, 'Qx Graph', 'Qx values', 'Years')
 
+<<<<<<< HEAD
 class Settings():
 
     def __init__(self):
         self.json = None
+=======
+class InputFile():
+>>>>>>> 2cd4a5b740ee57717f076773d1ea833f588c2806
 
     def from_file(self, file_name):
         f = None
