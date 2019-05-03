@@ -90,7 +90,7 @@ class Dataset():
             except IndexError:
                 Table.append([self.Nx[i], round(self.Lx[i],3), '...', '...'])
 
-        print('\n\n\n')
+        print('\n')
 
         print(tabulate(Table, headers = ['Nx', 'lx', 'dx', 'qx']))
 
