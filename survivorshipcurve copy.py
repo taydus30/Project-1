@@ -7,24 +7,24 @@ Created on Tue Apr  9 13:00:25 2019
 from tabulate import tabulate
 import matplotlib.pyplot as plt
 
-starting_population = int(input('starting population: \n'))
+starting_population = int(input('Starting population: \n'))
 print('')
-mortality_rate = float(input('enter mortality rate: \n'))
+mortality_rate = float(input('Enter mortality rate: \n'))
 print('')
 iterations = int(input('How many years: \n'))
 print('')
 
 #Nx = [314, 198, 89, 39, 28, 27, 24, 23, 20, 8, 4, 4, 2, 2, 1, 0]
-Nx = []
+Nx = [starting_population]
 lx = []
 dx = []
 qx = []
 
 # Takes user input for the data
-Nxdata = eval(input('Enter your Nx data separated by commas (Ex. 1, 2, 3) \n>'))
+#Nxdata = eval(input('Enter your Nx data separated by commas (Ex. 1, 2, 3) \n>'))
 
-for i in Nxdata:
-    Nx.append(i)
+for i in range(iterations):
+    Nx.append(Nx[i] * mortality_rate)
 
 # Calculates the lx values and appends to lx[]
 for i in range (len(Nx)):
