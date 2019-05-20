@@ -95,6 +95,17 @@ class DNA:
     def mutation(self, iterations = None):
         """Return a string based on the DNA strand with one randomly mutated base."""
         bases = 'ATCG'
+        if iterations > 0:
+            mutations = []
+            for i in range(iterations):
+                r = random.choice(bases)
+                index = random.randint(0, len(self.strand))
+                out = list(self.strand)
+                while out == list(self.strand):
+                    out[index] = r
+                mutations.append(''.join(out))
+            return mutations
+
         r = random.choice(bases)
         index = random.randint(0, len(self.strand))
         out = list(self.strand)
@@ -155,10 +166,3 @@ class DNA:
         percents["c"] = round((counts["c"] / len(self.strand))*100,3)
         percents["g"] = round((counts["g"] / len(self.strand))*100,3)
         return(percents[base])
-
-nnn = DNA().from_json("test.json")
-print('The compliment sequence is:',nnn.compliment(), '\n')
-print('mRNA sequence',nnn.mrna(),'\n')
-print('A mutation in the sequence could look like:', nnn.mutation(),'\n')
-nnn.compare("catg")
-print(nnn.base_frequencies("a"), '%')
