@@ -1,4 +1,6 @@
-
+"""
+# TODO: 3' end, 5' end
+"""
 
 class DNA:
 
@@ -32,6 +34,19 @@ class DNA:
                 out = out + "g"
         return(out)
 
+    def compare(self, comp):
+        if isinstance(comp, str):
+            same_chars = 0
+            for i in range(min(len(comp), len(self.strand)):
+                if comp[i] == self.strand[i]:
+                    same_chars +=
+            print("comparing ", comp, ", ", self.strand)
+            print(same_chars, " matches")
+            return(same_chars)
+        elif isinstance(comp, DNA):
+            self.compare(comp.strand)
+        else:
+            print("ERROR: Comparison not of another DNA or String")
 
 
 nnn = DNA("atcg")
