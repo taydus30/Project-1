@@ -6,8 +6,7 @@ class DNA:
         self.strand = string
 
     def compliment(self):
-        """ Returns the complimentary DNA strand, reversed.
-        """
+        """Returns the complimentary DNA strand, reversed."""
         out = ""
         for c in self.strand:
             if c == 'a':
@@ -22,8 +21,7 @@ class DNA:
         return(out[::-1])
 
     def mrna(self):
-        """ Returns the equivalent mRNA strand.
-        """
+        """Return the equivalent mRNA strand."""
         out = ""
         for c in self.strand:
             if c == 'a':
@@ -37,8 +35,7 @@ class DNA:
         return(out)
 
     def mutation(self):
-        """ Returns a string based on the DNA strand with one randomly mutated base.
-        """
+        """Return a string based on the DNA strand with one randomly mutated base."""
         bases = 'ATCG'
         r = random.choice(bases)
         index = random.randint(0, len(self.strand))
@@ -48,7 +45,8 @@ class DNA:
         return(''.join(out))
 
     def compare(self, comp):
-        """ Compares DNA strand with another and returns number of matching bases.
+        """Compare DNA strand with another and returns number of matching bases.
+
         ---
         comp : Str, DNA
             DNA sequence to compare to.
@@ -67,7 +65,8 @@ class DNA:
             print("ERROR: Comparison not of another DNA or String")
 
     def base_frequencies(self, base):
-        """ Returns frequency percentage of a given base.
+        """Return frequency percentage of a given base.
+
         ---
         base : Str
             Specifies which base to return frequency of.
@@ -76,7 +75,7 @@ class DNA:
             "a": 0,
             "t": 0,
             "c": 0,
-            "g":0
+            "g": 0
         }
 
         for i in self.strand:
