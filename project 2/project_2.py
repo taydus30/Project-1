@@ -7,7 +7,7 @@ class DNA:
 
     def compliment(self):
         out = ""
-        for c in strand:
+        for c in self.strand:
             if c == 'a':
                 out = out + "t"
             elif c == 't':
@@ -21,7 +21,7 @@ class DNA:
 
     def mrna(self):
         out = ""
-        for c in strand:
+        for c in self.strand:
             if c == 'a':
                 out = out + "u"
             elif c == 't':
@@ -31,3 +31,9 @@ class DNA:
             elif c == 'c':
                 out = out + "g"
         return(out)
+
+
+
+nnn = DNA("atcg")
+print(nnn.compliment())
+print(nnn.mrna())
