@@ -123,6 +123,9 @@ class DNA:
         else:
             print("ERROR: Comparison not of another DNA or String")
 
+    def gc_comp(self):
+        return(self.base_frequencies("g") + self.base_frequencies("c"))
+
     def base_frequencies(self, base):
         """Return frequency percentage of a given base.
 
