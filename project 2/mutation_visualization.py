@@ -21,7 +21,7 @@ def draw_dna(string):
     green = (0, 255, 0)
     yellow = (255, 255, 0)
     x = 6
-    y = 20
+    y = 30
     for c in string:
         if c == "a":
             pygame.draw.rect(screen, red, pygame.Rect(x, y, zoom, zoom))
@@ -42,6 +42,8 @@ while running:
 
     draw_dna(strands[index])
 
+    colors = font.render("A = red, T = blue, G = green, C = yellow", False, (0,0,0))
+    screen.blit(colors, (3,3))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
