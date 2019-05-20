@@ -1,12 +1,62 @@
+"""
+todo:
+#upper division requirements
+- from_json() and from_txt() functions
+- docstring / doctest functions
+- seperate file that shows how to interact with class (with comments) (instructions)
+- "final formatting of output / results", so, tabulate some advanced funcs?
+#dna class features
+- protein start / stops
+- more types of comparisons for sequences
+#other features
+- show changes / mutations of a DNA strand over time
+    - turtle /.pygame for drawing a graph where colors represent ATCG
+"""
 import random
+import json
 
 class DNA:
 
-    def __init__(self, string):
-        self.strand = string
+    def __init__(self, string = None):
+        if(string is None):
+            return
+        if(self.validate_sequence(string)):
+            self.strand = string.lower()
+
+    def validate_sequence(self, string):
+        out = True
+        for c in string.lower():
+            if c != "a" or c != "t" or c != "c" or c != "g":
+                out = False
+                print("Invalid Input! String is not a proper DNA sequence")
+                ERROR("Sequence not set.")
+                break
+        return(out)
+
+    def from_file(self, filename):
+        f = open(filename).read().lower()
+        if (self.validate_sequence(f)):
+            self.strand = f
+        return(self)
+
+    def from_json(self, filename):
+        if(os.path.isfile(file_name)):
+            file = open(file_name)
+            json = json.load(file)
+            f = json['sequence']
+        else:
+            print("Invalid JSON file path.")
+            return
+        if (self.validate_sequence(f)):
+            self.strand = f
+        return(self)
+
+    def set_sequence(self, seq):
+        if(self.validate_sequence(seq)):
+            self.strand = seq
 
     def compliment(self):
-        """Returns the complimentary DNA strand, reversed."""
+        """Returns the complimentary DNA sequence, reversed."""
         out = ""
         for c in self.strand:
             if c == 'a':
@@ -21,7 +71,7 @@ class DNA:
         return(out[::-1])
 
     def mrna(self):
-        """Return the equivalent mRNA strand."""
+        """Return the equivalent mRNA sequence."""
         out = ""
         for c in self.strand:
             if c == 'a':
@@ -34,7 +84,7 @@ class DNA:
                 out = out + "g"
         return(out)
 
-    def mutation(self):
+    def mutation(self, iterations = None):
         """Return a string based on the DNA strand with one randomly mutated base."""
         bases = 'ATCG'
         r = random.choice(bases)
@@ -95,8 +145,7 @@ class DNA:
         percents["g"] = round((counts["g"] / len(self.strand))*100,3)
         return(percents[base])
 
-
-nnn = DNA("atcg")
+nnn = DNA().from_file(filename="test.json")
 print(nnn.compliment())
 print(nnn.mrna())
 print(nnn.mutation())
