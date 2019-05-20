@@ -29,7 +29,7 @@ class DNA:
             if c != "a" or c != "t" or c != "c" or c != "g":
                 out = False
                 print("Invalid Input! String is not a proper DNA sequence")
-                ERROR("Sequence not set.")
+                print("Sequence not set.")
                 break
         return(out)
 
