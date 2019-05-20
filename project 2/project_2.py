@@ -13,9 +13,12 @@ todo:
     - turtle /.pygame for drawing a graph where colors represent ATCG
 """
 import random
+import os
 import json
 
 class DNA:
+
+    strand : str = ""
 
     def __init__(self, string = None):
         if(string is None):
@@ -25,25 +28,30 @@ class DNA:
 
     def validate_sequence(self, string):
         out = True
-        for c in string.lower():
-            if c != "a" or c != "t" or c != "c" or c != "g":
+        string = string.lower()
+        for c in string:
+            if c == "a" or c == "t" or c == "c" or c == "g":
+                None
+            else:
                 out = False
-                print("Invalid Input! String is not a proper DNA sequence")
+                print("Invalid Input! String is not a proper DNA sequence:")
+                print(c)
                 print("Sequence not set.")
-                break
+                return(out)
         return(out)
 
     def from_file(self, filename):
+        self.strand = ""
         f = open(filename).read().lower()
         if (self.validate_sequence(f)):
             self.strand = f
         return(self)
 
     def from_json(self, filename):
-        if(os.path.isfile(file_name)):
-            file = open(file_name)
-            json = json.load(file)
-            f = json['sequence']
+        if(os.path.isfile(filename)):
+            file = open(filename)
+            j = json.load(file)
+            f = j['sequence'].lower()
         else:
             print("Invalid JSON file path.")
             return
@@ -145,9 +153,9 @@ class DNA:
         percents["g"] = round((counts["g"] / len(self.strand))*100,3)
         return(percents[base])
 
-nnn = DNA().from_file(filename="test.json")
+nnn = DNA().from_json("test.json")
 print(nnn.compliment())
 print(nnn.mrna())
 print(nnn.mutation())
 nnn.compare("catg")
-print(nnn.ba("a"))
+print(nnn.base_frequencies("a"))
