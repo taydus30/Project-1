@@ -60,6 +60,7 @@ class DNA:
             print(same_chars, " matches")
             return(same_chars)
         elif isinstance(comp, DNA):
+            #if input is DNA object, recursively call with a string
             self.compare(comp.strand)
         else:
             print("ERROR: Comparison not of another DNA or String")
