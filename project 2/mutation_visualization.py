@@ -4,6 +4,8 @@ import time
 from project_2 import DNA
 
 pygame.init()
+pygame.font.init()
+font = pygame.font.SysFont('Arial', 12)
 
 project_dna = DNA().from_json("test.json")
 
@@ -22,20 +24,21 @@ def draw_dna(string):
     y = 20
     for c in string:
         if c == "a":
-            pygame.draw.rect(screen, red, pygame.Rect(x, y, 5, 5))
+            pygame.draw.rect(screen, red, pygame.Rect(x, y, zoom, zoom))
         if c == "t":
-            pygame.draw.rect(screen, blue, pygame.Rect(x, y, 5, 5))
+            pygame.draw.rect(screen, blue, pygame.Rect(x, y, zoom, zoom))
         if c == "g":
-            pygame.draw.rect(screen, green, pygame.Rect(x, y, 5, 5))
+            pygame.draw.rect(screen, green, pygame.Rect(x, y, zoom, zoom))
         if c == "c":
-            pygame.draw.rect(screen, yellow, pygame.Rect(x, y, 5, 5))
-        x += 6
+            pygame.draw.rect(screen, yellow, pygame.Rect(x, y, zoom, zoom))
+        x += zoom + 1
 
 strands = [project_dna.strand]
 index = 0
+zoom = 5
 while running:
     time.sleep(1/60)
-
+    screen.fill((255,255,255))
 
     draw_dna(strands[index])
 
@@ -44,6 +47,11 @@ while running:
             pygame.quit()
             quit()
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                zoom += 1
+            if event.key == pygame.K_DOWN:
+                zoom -= 1
+                zoom = max(zoom, 5)
             if event.key == pygame.K_LEFT:
                 index -= 1
                 index = max(0, index)
