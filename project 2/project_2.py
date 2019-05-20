@@ -44,9 +44,9 @@ class DNA:
     def compare(self, comp):
         if isinstance(comp, str):
             same_chars = 0
-            for i in range(min(len(comp), len(self.strand)):
+            for i in range(min(len(comp), len(self.strand))):
                 if comp[i] == self.strand[i]:
-                    same_chars +=
+                    same_chars += 1
             print("comparing ", comp, ", ", self.strand)
             print(same_chars, " matches")
             return(same_chars)
@@ -55,31 +55,33 @@ class DNA:
         else:
             print("ERROR: Comparison not of another DNA or String")
 
-    def base_frequencies(self):
-        count_a = 0
-        count_t = 0
-        count_c = 0
-        count_g = 0
+    def base_frequencies(self, base):
+        counts = {
+            "a": 0,
+            "t": 0,
+            "c": 0,
+            "g":0
+        }
 
         for i in self.strand:
             if i == 'a' or i == 'A':
-                count_a += 1
+                counts["a"] += 1
             if i == 't' or i == 'T':
-                count_t += 1
+                counts["t"] += 1
             if i == 'c' or i == 'C':
-                count_c += 1
+                counts["c"] += 1
             if i == 'g' or i == 'G':
-                count_g += 1
-
-        percent_a = round((count_a / len(self.strand))*100,3)
-        percent_t = round((count_t / len(self.strand))*100,3)
-        percent_c = round((count_c / len(self.strand))*100,3)
-        percent_g = round((count_g / len(self.strand))*100,3)
-        return(percent_a, percent_t, percent_c, percent_g)
+                counts["g"] += 1
+        percents = {}
+        percents["a"] = round((counts["a"] / len(self.strand))*100,3)
+        percents["t"] = round((counts["t"] / len(self.strand))*100,3)
+        percents["c"] = round((counts["c"] / len(self.strand))*100,3)
+        percents["g"] = round((counts["g"] / len(self.strand))*100,3)
+        return(percents[base])
 
 
 nnn = DNA("atcg")
 print(nnn.compliment())
 print(nnn.mrna())
 print(nnn.mutation())
-print(nnn.base_frequencies())
+print(nnn.base_frequencies("a"))
