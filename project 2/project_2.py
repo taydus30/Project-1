@@ -41,7 +41,20 @@ class DNA:
             out[index] = r
         return(''.join(out))
 
-<<<<<<< HEAD
+    def compare(self, comp):
+        if isinstance(comp, str):
+            same_chars = 0
+            for i in range(min(len(comp), len(self.strand)):
+                if comp[i] == self.strand[i]:
+                    same_chars +=
+            print("comparing ", comp, ", ", self.strand)
+            print(same_chars, " matches")
+            return(same_chars)
+        elif isinstance(comp, DNA):
+            self.compare(comp.strand)
+        else:
+            print("ERROR: Comparison not of another DNA or String")
+
     def base_frequencies(self):
         count_a = 0
         count_t = 0
@@ -63,21 +76,6 @@ class DNA:
         percent_c = round((count_c / len(self.strand))*100,3)
         percent_g = round((count_g / len(self.strand))*100,3)
         return(percent_a, percent_t, percent_c, percent_g)
-=======
-    def compare(self, comp):
-        if isinstance(comp, str):
-            same_chars = 0
-            for i in range(min(len(comp), len(self.strand)):
-                if comp[i] == self.strand[i]:
-                    same_chars +=
-            print("comparing ", comp, ", ", self.strand)
-            print(same_chars, " matches")
-            return(same_chars)
-        elif isinstance(comp, DNA):
-            self.compare(comp.strand)
-        else:
-            print("ERROR: Comparison not of another DNA or String")
->>>>>>> 1797fa9b55b8231c3f7a533c1418af83babd39e5
 
 
 nnn = DNA("atcg")
