@@ -93,14 +93,26 @@ class DNA:
         return(out)
 
     def mutation(self, iterations = None):
-        """Return a string based on the DNA strand with one randomly mutated base."""
-        bases = 'ATCG'
-        r = random.choice(bases)
-        index = random.randint(0, len(self.strand))
-        out = list(self.strand)
-        while out == list(self.strand):
-            out[index] = r
-        return(''.join(out))
+          """Return a string based on the DNA strand with one randomly mutated base."""
+          bases = 'ATCG'
+          if isinstance(iterations, int):
+              mutations = []
+              for i in range(iterations):
+                  out = list(self)
+                  while out == list(self):
+                      r = random.choice(bases)
+                      index = random.randint(0, len(self)-1)
+                      out[index] = r
+                  mutations.append(''.join(out))
+              return mutations
+
+
+          out = list(self)
+          while out == list(self):
+              r = random.choice(bases)
+              index = random.randint(0, len(self))
+              out[index] = r
+          return(''.join(out))
 
     def compare(self, comp):
         """Compare DNA strand with another and returns number of matching bases.
@@ -155,10 +167,3 @@ class DNA:
         percents["c"] = round((counts["c"] / len(self.strand))*100,3)
         percents["g"] = round((counts["g"] / len(self.strand))*100,3)
         return(percents[base])
-
-nnn = DNA().from_json("test.json")
-print('The compliment sequence is:',nnn.compliment(), '\n')
-print('mRNA sequence',nnn.mrna(),'\n')
-print('A mutation in the sequence could look like:', nnn.mutation(),'\n')
-nnn.compare("catg")
-print(nnn.base_frequencies("a"), '%')
