@@ -1,4 +1,4 @@
-
+import random
 
 class DNA:
 
@@ -32,8 +32,18 @@ class DNA:
                 out = out + "g"
         return(out)
 
+    def mutation(self):
+        bases = 'ATCG'
+        r = random.choice(bases)
+        index = random.randint(0, len(self))
+        out = list(self)
+        while out == list(self):
+            out[index] = r
+        return(''.join(out))
+
 
 
 nnn = DNA("atcg")
 print(nnn.compliment())
 print(nnn.mrna())
+print(nnn.mutation())
