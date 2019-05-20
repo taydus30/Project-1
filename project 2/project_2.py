@@ -107,10 +107,10 @@ class DNA:
               return mutations
 
 
-          out = list(self)
-          while out == list(self):
+          out = list(self.strand)
+          while out == list(self.strand):
               r = random.choice(bases)
-              index = random.randint(0, len(self))
+              index = random.randint(0, len(self.strand))
               out[index] = r
           return(''.join(out))
 
