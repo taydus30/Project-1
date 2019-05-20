@@ -50,7 +50,7 @@ class DNA:
     def compare(self, comp):
         """ Compares DNA strand with another and returns number of matching bases.
         ---
-        Str, DNA comp
+        comp : Str, DNA
             DNA sequence to compare to.
         """
         if isinstance(comp, str):
@@ -69,7 +69,7 @@ class DNA:
     def base_frequencies(self, base):
         """ Returns frequency percentage of a given base.
         ---
-        Str base
+        base : Str
             Specifies which base to return frequency of.
         """
         counts = {
@@ -101,4 +101,4 @@ print(nnn.compliment())
 print(nnn.mrna())
 print(nnn.mutation())
 nnn.compare("catg")
-print(nnn.base_frequencies("a"))
+print(nnn.ba("a"))
