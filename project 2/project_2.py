@@ -98,10 +98,10 @@ class DNA:
           if isinstance(iterations, int):
               mutations = []
               for i in range(iterations):
-                  out = list(self)
-                  while out == list(self):
+                  out = list(self.strand)
+                  while out == list(self.strand):
                       r = random.choice(bases)
-                      index = random.randint(0, len(self)-1)
+                      index = random.randint(0, len(self.strand)-1)
                       out[index] = r
                   mutations.append(''.join(out))
               return mutations
