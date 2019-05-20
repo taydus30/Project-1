@@ -93,25 +93,26 @@ class DNA:
         return(out)
 
     def mutation(self, iterations = None):
-        """Return a string based on the DNA strand with one randomly mutated base."""
-        bases = 'ATCG'
-        if iterations > 0:
-            mutations = []
-            for i in range(iterations):
-                r = random.choice(bases)
-                index = random.randint(0, len(self.strand))
-                out = list(self.strand)
-                while out == list(self.strand):
-                    out[index] = r
-                mutations.append(''.join(out))
-            return mutations
+          """Return a string based on the DNA strand with one randomly mutated base."""
+          bases = 'ATCG'
+          if isinstance(iterations, int):
+              mutations = []
+              for i in range(iterations):
+                  out = list(self)
+                  while out == list(self):
+                      r = random.choice(bases)
+                      index = random.randint(0, len(self)-1)
+                      out[index] = r
+                  mutations.append(''.join(out))
+              return mutations
 
-        r = random.choice(bases)
-        index = random.randint(0, len(self.strand))
-        out = list(self.strand)
-        while out == list(self.strand):
-            out[index] = r
-        return(''.join(out))
+
+          out = list(self)
+          while out == list(self):
+              r = random.choice(bases)
+              index = random.randint(0, len(self))
+              out[index] = r
+          return(''.join(out))
 
     def compare(self, comp):
         """Compare DNA strand with another and returns number of matching bases.
