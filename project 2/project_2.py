@@ -115,7 +115,7 @@ class DNA:
                 if comp[i] == self.strand[i]:
                     same_chars += 1
             print("comparing ", comp, ", ", self.strand)
-            print(same_chars, " matches")
+            print(same_chars, " matches \n")
             return(same_chars)
         elif isinstance(comp, DNA):
             #if input is DNA object, recursively call with a string
@@ -158,9 +158,9 @@ class DNA:
 
 """
 nnn = DNA().from_json("test.json")
-print(nnn.compliment())
-print(nnn.mrna())
-print(nnn.mutation())
+print('The compliment sequence is:',nnn.compliment(), '\n')
+print('mRNA sequence',nnn.mrna(),'\n')
+print('A mutation in the sequence could look like:', nnn.mutation(),'\n')
 nnn.compare("catg")
 print(nnn.base_frequencies("a"), '%')
 """
