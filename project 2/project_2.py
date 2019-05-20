@@ -156,9 +156,11 @@ class DNA:
         percents["g"] = round((counts["g"] / len(self.strand))*100,3)
         return(percents[base])
 
+"""
 nnn = DNA().from_json("test.json")
 print(nnn.compliment())
 print(nnn.mrna())
 print(nnn.mutation())
 nnn.compare("catg")
 print(nnn.base_frequencies("a"), '%')
+"""
