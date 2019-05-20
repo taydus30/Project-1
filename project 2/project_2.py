@@ -155,12 +155,3 @@ class DNA:
         percents["c"] = round((counts["c"] / len(self.strand))*100,3)
         percents["g"] = round((counts["g"] / len(self.strand))*100,3)
         return(percents[base])
-
-"""
-nnn = DNA().from_json("test.json")
-print('The compliment sequence is:',nnn.compliment(), '\n')
-print('mRNA sequence',nnn.mrna(),'\n')
-print('A mutation in the sequence could look like:', nnn.mutation(),'\n')
-nnn.compare("catg")
-print(nnn.base_frequencies("a"), '%')
-"""
