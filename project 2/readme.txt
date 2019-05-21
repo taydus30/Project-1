@@ -9,6 +9,7 @@ it allows you to compare your sequence to another sequence, and it allows you
 to generate either 1 mutation, or a list of mutations through iterations.
 
 project_2.py is the file containing our DNA class and all the functions described above.
+code_tests.py is a doctest implementation of the DNA class and its functions.
 
 mutation_visualization.py is a file that gives an example of how to use our library.
 It is a graphical Visualization of a DNA sequence that color-codes the bases, and
