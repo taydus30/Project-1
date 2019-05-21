@@ -59,7 +59,8 @@ while running:
                 index = max(0, index)
             if event.key == pygame.K_RIGHT:
                 project_dna.strand = project_dna.mutation()
-                strands += project_dna.strand
+                strands.append(project_dna.strand.lower())
+                print("new sequence: ", project_dna.strand)
                 index += 1
             if event.key == pygame.K_ESCAPE:
                 running = False
