@@ -1,7 +1,7 @@
 """
 Created By: Tucker, Dustyn,
 Project 2
-DNA calculations
+DNA Graphic Visualization
 """
 
 
