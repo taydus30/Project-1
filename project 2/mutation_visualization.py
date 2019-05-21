@@ -1,3 +1,10 @@
+"""
+Created By: Tucker, Dustyn,
+Project 2
+DNA Graphic Visualization
+"""
+
+
 import pygame
 from pygame.locals import *
 import time
