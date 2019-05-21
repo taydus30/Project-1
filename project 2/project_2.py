@@ -94,7 +94,7 @@ class DNA:
 
     def mutation(self, iterations = None):
           """Return a string based on the DNA strand with one randomly mutated base."""
-          bases = 'ATCG'
+          bases = 'atcg'
           if isinstance(iterations, int):
               mutations = []
               for i in range(iterations):
