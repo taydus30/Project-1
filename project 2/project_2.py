@@ -110,7 +110,7 @@ class DNA:
           out = list(self.strand)
           while out == list(self.strand):
               r = random.choice(bases)
-              index = random.randint(0, len(self.strand))
+              index = random.randint(0, len(self.strand)-1)
               out[index] = r
           return(''.join(out))
 
