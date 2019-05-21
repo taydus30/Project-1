@@ -5,7 +5,7 @@ from project_2 import DNA
 
 pygame.init()
 pygame.font.init()
-font = pygame.font.SysFont('Arial', 12)
+font = pygame.font.SysFont('Arial', 16)
 
 project_dna = DNA().from_json("test.json")
 
@@ -43,7 +43,11 @@ while running:
     draw_dna(strands[index])
 
     colors = font.render("A = red, T = blue, G = green, C = yellow", False, (0,0,0))
+    instructions = font.render("left/right: advance in time through mutations,    up/down: zoom in and out", False, (0,0,0))
+    st = font.render("generation: " + str(index), False, (0,0,0))
     screen.blit(colors, (3,3))
+    screen.blit(instructions, (3, zoom + 40))
+    screen.blit(st, (3, zoom + 55))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
