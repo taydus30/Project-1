@@ -44,7 +44,7 @@ while running:
 
     colors = font.render("A = red, T = blue, G = green, C = yellow", False, (0,0,0))
     instructions = font.render("left/right: advance in time through mutations,    up/down: zoom in and out", False, (0,0,0))
-    st = font.render("generation: " + str(index), False, (0,0,0))
+    st = font.render("generation: " + str(index + 1) + " / " + str(len(strands)), False, (0,0,0))
     screen.blit(colors, (3,3))
     screen.blit(instructions, (3, zoom + 40))
     screen.blit(st, (3, zoom + 55))
@@ -62,10 +62,13 @@ while running:
                 index -= 1
                 index = max(0, index)
             if event.key == pygame.K_RIGHT:
-                project_dna.strand = project_dna.mutation()
-                strands.append(project_dna.strand.lower())
-                print("new sequence: ", project_dna.strand)
-                index += 1
+                if index == len(strands) - 1:
+                    project_dna.strand = project_dna.mutation()
+                    strands.append(project_dna.strand.lower())
+                    print("new sequence: ", project_dna.strand)
+                    index += 1
+                else:
+                    index += 1
             if event.key == pygame.K_ESCAPE:
                 running = False
 
