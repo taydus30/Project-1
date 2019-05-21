@@ -1,16 +1,7 @@
 """
-todo:
-#upper division requirements
-- from_json() and from_txt() functions *
-- docstring / doctest functions
-- seperate file that shows how to interact with class (with comments) (instructions)
-- "final formatting of output / results", so, tabulate some advanced funcs?
-#dna class features
-- protein start / stops
-- more types of comparisons for sequences
-#other features
-- show changes / mutations of a DNA strand over time
-    - turtle /.pygame for drawing a graph where colors represent ATCG
+Created By: Tucker, Dustyn,
+Project 2
+DNA calculations
 """
 import random
 import os

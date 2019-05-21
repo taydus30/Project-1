@@ -1,3 +1,10 @@
+"""
+Created By: Tucker, Dustyn,
+Project 2
+DNA calculations
+"""
+
+
 import pygame
 from pygame.locals import *
 import time
