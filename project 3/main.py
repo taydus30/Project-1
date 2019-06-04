@@ -14,8 +14,10 @@ def init():
     global zoom
     global world_surface
     global simulation_speed
+    global width
+    global height
 
-    simulation_speed = 4
+    simulation_speed = 10
     zoom = 8
 
     move_x = 0
@@ -24,8 +26,8 @@ def init():
     x = 0
     y = 0
 
-    (width, height) = (640, 360)
-
+    (width, height) = (1280, 720)
+    
     world_surface = pygame.Surface((width, height))
     world = World(width // 8, height // 8)
     world.spawnWorldObjects()

@@ -9,13 +9,13 @@ def spawnInWorld():
             # tree generation
             if main.world.terrainAt(x, y) == "grass":
                 if random.randrange(0, 40) == 0:
-                    tr = Tree()
+                    tr = Chicken()
                     tr.x = x * 8
                     tr.y = y * 8
                     main.world.spawnObjectAt(tr, x, y)
 
 
-class Tree(Sprite):
+class Chicken(Sprite):
 
     type: str = "plant"
     id:   str = "tree"
@@ -44,8 +44,8 @@ class Tree(Sprite):
         if(self.terrAt() == "snow"):
             self.age += 2
 
-        if(self.years()) > 30:
-            if random.randrange(0, 400) == 0:
+        if(self.years()) > 50:
+            if random.randrange(0, 500) == 0:
 
                 xx = random.randrange(-3, 3) + self.world_x()
                 yy = random.randrange(-3, 3) + self.world_y()
@@ -53,6 +53,6 @@ class Tree(Sprite):
                     main.world.spawnObjectAt(Tree(), xx, yy)
                     print("generating new tree at", xx, ", ", yy)
 
-        if self.years() > 80 + self.death_tolerance:
+        if self.years() > 60 + self.death_tolerance:
             self.alive = False
             print("tree died")
