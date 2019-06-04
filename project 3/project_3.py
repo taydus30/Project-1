@@ -1,49 +1,63 @@
 import pygame
 from pygame.locals import *
 import time
-import numpy as np
-import noise
-from world import World
+import main
 
-pygame.init()
-pygame.font.init()
-font = pygame.font.SysFont('Arial', 16)
-
-(width, height) = (1280, 720)
-screen = pygame.display.set_mode((width, height))
-pygame.display.flip()
-pygame.display.set_caption("project 3")
 running = True
-
-world = World()
-
-def setup():
-    print('setup')
+main.init()
 
 
 def update():
+    main.world_surface.fill((255,255,255))
     draw_terrain()
+    main.world.update()
+    game_event()
+    move()
+
+
+def move():
+    main.x += main.move_x
+    main.y += main.move_y
+
+
+def game_event():
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                main.move_y += 1
+            if event.key == pygame.K_DOWN:
+                main.move_y -= 1
+            if event.key == pygame.K_LEFT:
+                main.move_x += 1
+            if event.key == pygame.K_RIGHT:
+                main.move_x -= 1
+            if event.key == pygame.K_ESCAPE:
+                pygame.quit()
+                quit()
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_UP:
+                main.move_y = 0
+            if event.key == pygame.K_DOWN:
+                main.move_y = 0
+            if event.key == pygame.K_LEFT:
+                main.move_x = 0
+            if event.key == pygame.K_RIGHT:
+                main.move_x = 0
+
 
 def draw_terrain():
-    for x in range(len(world.terrain)):
-        for y in range(len(world.terrain[0])):
-            height = world.terrain[x][y]
-            color = get_terrain_color(height)
-            pygame.draw.rect(screen, color, pygame.Rect(x*5, y*5, 5, 5))
+    for x in range(len(main.world.terrain)):
+        for y in range(len(main.world.terrain[0])):
+            color = main.world.colorAt(x, y)
+            pygame.draw.rect(main.world_surface, color, pygame.Rect(x*8 + main.x, y*8 + main.y, 8, 8))
 
-def get_terrain_color(height):
-    if height < 0.47:
-        return((0,0,255))
-    if height < 0.488:
-        return((220,190,150))
-    elif height > 0.6:
-        return((200 + height * 10,200 + height * 10,250))
-    else:
-        return((height * 159, height * 120 + 80, height * 120))
 
-setup()
 while running:
     time.sleep(1/60)
-    screen.fill((255,255,255))
+    main.screen.fill((255, 255, 255))
     update()
+    main.screen.blit(main.world_surface, (main.x, main.y))
     pygame.display.flip()
