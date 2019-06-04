@@ -3,6 +3,7 @@ import numpy as np
 import random
 import tree
 import main
+import berry_bush
 
 class World:
 
@@ -85,4 +86,5 @@ class World:
 
     def spawnWorldObjects(self):
         tree.spawnInWorld()
+        berry_bush.spawnInWorld()
         print("generated world objects")
