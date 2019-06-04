@@ -28,6 +28,9 @@ class World:
             if obj.alive:
                 obj.update()
 
+    def heightAt(self, x, y):
+        return(self.terrain[x][y])
+
     def terrainAt(self, x, y):
         height = self.terrain[x][y]
         if height < 0.46:
