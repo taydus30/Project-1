@@ -15,7 +15,7 @@ def init():
     global world_surface
     global simulation_speed
 
-    simulation_speed = 2
+    simulation_speed = 4
     zoom = 8
 
     move_x = 0

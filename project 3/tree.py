@@ -46,11 +46,12 @@ class Tree(Sprite):
 
         if(self.years()) > 50:
             if random.randrange(0, 500) == 0:
-                print("generating new tree")
+
                 xx = random.randrange(-3, 3) + self.world_x()
                 yy = random.randrange(-3, 3) + self.world_y()
-                if(xx != 0 and yy != 0) and not on_beach and main.world.objectAt(self.world_x, self.world_y) is not None:
+                if(xx != 0 and yy != 0) and not on_beach:
                     main.world.spawnObjectAt(Tree(), xx, yy)
+                    print("generating new tree at", xx, ", ", yy)
 
         if self.years() > 60 + self.death_tolerance:
             self.alive = False
