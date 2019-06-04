@@ -2,7 +2,7 @@ import perlin
 import numpy as np
 import random
 import tree
-
+import main
 
 class World:
 
@@ -21,9 +21,15 @@ class World:
             if (p * 100) % 10.0 < 0.3:
                 print(int(p * 100), "% complete")
         print("generated world")
-        return
+        self.age = 0
+        self.curr_year = 0
 
     def update(self):
+        self.age += 1
+        years = self.age // (60 / main.simulation_speed)
+        if years > self.curr_year:
+            self.curr_year += 1
+            print("year ", years)
         for obj in self.objects:
             if obj.alive:
                 obj.update()

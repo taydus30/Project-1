@@ -26,7 +26,7 @@ class Sprite:
         return int(self.y // 8)
 
     def years(self):
-        return(self.age // 60)
+        return(self.age // (60 / main.simulation_speed))
 
     def terrAt(self):
         #simple func for shortening code
