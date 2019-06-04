@@ -17,7 +17,7 @@ class Sprite:
     def update(self):
         self.age += 1
         if self.alive:
-            main.world_surface.blit(self.surface, (self.x + main.x, self.y + main.y) )
+            main.world_surface.blit(self.surface, (self.x , self.y) )
 
     def world_x(self):
         return int(self.x // 8)

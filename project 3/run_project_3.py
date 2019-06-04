@@ -3,13 +3,10 @@ from pygame.locals import *
 import time
 import main
 
-running = True
-main.init()
-
 
 def update():
     main.world_surface.fill((255,255,255))
-    drawTerrain()
+    main.world_surface.blit(terrain_surface, (0,0))
     main.world.update()
     gameEvent()
     move()
@@ -61,9 +58,12 @@ def drawTerrain():
     for x in range(len(main.world.terrain)):
         for y in range(len(main.world.terrain[0])):
             color = main.world.colorAt(x, y)
-            pygame.draw.rect(main.world_surface, color, pygame.Rect(x*8 + main.x, y*8 + main.y, 8, 8))
+            pygame.draw.rect(terrain_surface, color, pygame.Rect(x*8 + main.x, y*8 + main.y, 8, 8))
 
-
+main.init()
+terrain_surface = pygame.Surface((main.width, main.height))
+drawTerrain()
+running = True
 while running:
     time.sleep(1/60)
     main.screen.fill((255, 255, 255))
