@@ -8,9 +8,11 @@ class Sprite:
     y:     int = 0
     age:   int = 0
 
-    def __init__(self, filename):
+    def __init__(self, filename, x=0, y=0):
         self.surface = pygame.image.load("img/" + filename)
         self.alive = True
+        self.x = x
+        self.y = y
 
     def update(self):
         self.age += 1

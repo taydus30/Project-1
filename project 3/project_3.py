@@ -9,9 +9,9 @@ main.init()
 
 def update():
     main.world_surface.fill((255,255,255))
-    draw_terrain()
+    drawTerrain()
     main.world.update()
-    game_event()
+    gameEvent()
     move()
 
 
@@ -20,7 +20,7 @@ def move():
     main.y += main.move_y
 
 
-def game_event():
+def gameEvent():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -48,7 +48,7 @@ def game_event():
                 main.move_x = 0
 
 
-def draw_terrain():
+def drawTerrain():
     for x in range(len(main.world.terrain)):
         for y in range(len(main.world.terrain[0])):
             color = main.world.colorAt(x, y)

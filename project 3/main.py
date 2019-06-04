@@ -26,7 +26,8 @@ def init():
 
     world_surface = pygame.Surface((width, height))
     world = World(width // 8, height // 8)
-
+    world.spawnWorldObjects()
+    
     pygame.init()
     pygame.font.init()
     font = pygame.font.SysFont('Arial', 16)

@@ -2,7 +2,7 @@ import perlin
 import numpy as np
 import random
 import tree
-
+import main
 
 class World:
 
@@ -20,8 +20,8 @@ class World:
             p = x / width
             if (p * 100) % 10.0 < 0.3:
                 print(int(p * 100), "% complete")
-        self.spawnWorldObjects()
         print("generated world")
+        return
 
     def update(self):
         for obj in self.objects:
@@ -52,22 +52,28 @@ class World:
             # grass
             return((height * 159, height * 120 + 80, height * 120))
 
+    def objectAt(self, x, y):
+        out = None
+        for obj in self.objects:
+            if(obj.world_x() == x and obj.world_y() == y):
+                out = obj
+        # we want to return the object if one is there
+        # ie if an animal is looking at nearby objects for food it would set
+        # alive to false to show its eaten
+        return(out)
+
     def spawnObjectAt(self, object, world_x, world_y):
+        # don't spawn if an object would overlap
+        if self.objectAt(world_x, world_y) is not None:
+            return
         # don't spawn objects out of bounds of the map
-        if world_x > self.width or world_y > self.height or world_x < 0 or world_y < 0:
+        if world_x >= self.width or world_y >= self.height or world_x < 0 or world_y < 0:
             return
         object.x = world_x * 8
         object.y = world_y * 8
         self.objects.append(object)
+        return(object)
 
     def spawnWorldObjects(self):
-        for x in range(self.width):
-            for y in range(self.height):
-                # tree generation
-                if self.terrainAt(x, y) == "grass":
-                    if random.randrange(0, 40) == 0:
-                        print("spawn tree")
-                        tr = tree.Tree()
-                        tr.x = x * 8
-                        tr.y = y * 8
-                        self.objects.append(tr)
+        tree.spawnInWorld()
+        print("generated world objects")
