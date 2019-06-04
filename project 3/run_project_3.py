@@ -72,5 +72,6 @@ while running:
     new_size = (main.world.width * main.zoom, main.world.height * main.zoom)
     zoom_surface = pygame.Surface(new_size)
     pygame.transform.smoothscale(main.world_surface, new_size, zoom_surface)
+    main.screen.fill((255, 255, 255))
     main.screen.blit(zoom_surface, scale_location)
     pygame.display.flip()
