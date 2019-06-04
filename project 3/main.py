@@ -32,7 +32,7 @@ def init():
     pygame.font.init()
     font = pygame.font.SysFont('Arial', 16)
 
-    screen = pygame.display.set_mode((width, height))
+    screen = pygame.display.set_mode((width, height), depth=32)
 
     pygame.display.flip()
     pygame.display.set_caption("project 3")
