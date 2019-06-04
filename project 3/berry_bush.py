@@ -25,7 +25,7 @@ class Berry_Bush(Sprite):
     def __init__(self):
         super().__init__('berries.png')
         self.alive = True
-        self.death_tolerance = random.randrange(0, 50)
+        self.death_tolerance = random.randrange(0, 5)
 
     def update(self):
         # if this is somehow in water, it should not be alive
@@ -42,10 +42,10 @@ class Berry_Bush(Sprite):
 
         # dies quicker in the snow
         if(self.terrAt() == "snow"):
-            self.age += 2
+            self.age += 1
 
-        if(self.years()) > 50:
-            if random.randrange(0, 500) == 0:
+        if(self.years()) > 3:
+            if random.randrange(0, 20) == 0:
 
                 xx = random.randrange(-3, 3) + self.world_x()
                 yy = random.randrange(-3, 3) + self.world_y()
@@ -53,6 +53,6 @@ class Berry_Bush(Sprite):
                     main.world.spawnObjectAt(Berry_Bush(), xx, yy)
                     print("generating new berry bush at", xx, ", ", yy)
 
-        if self.years() > 60 + self.death_tolerance:
+        if self.years() > 8 + self.death_tolerance:
             self.alive = False
             print("berry bush died")
