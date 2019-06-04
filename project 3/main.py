@@ -14,7 +14,7 @@ def init():
     global zoom
     global world_surface
 
-    zoom = 0
+    zoom = 8
 
     move_x = 0
     move_y = 0
@@ -27,7 +27,7 @@ def init():
     world_surface = pygame.Surface((width, height))
     world = World(width // 8, height // 8)
     world.spawnWorldObjects()
-    
+
     pygame.init()
     pygame.font.init()
     font = pygame.font.SysFont('Arial', 16)
