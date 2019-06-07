@@ -26,7 +26,7 @@ class Chicken(Sprite):
         super().__init__('chicken.png')
         self.alive = True
         self.death_tolerance = random.randrange(0, 4)
-        self.hunger = 10
+        self.hunger = 1000
 
     def update(self):
         # if this is somehow in water, it should not be alive
@@ -35,24 +35,20 @@ class Chicken(Sprite):
         super().update()
         if self.alive is False:
             return
-        # if it is on the beach we want to know
-        on_beach = False
-        if self.terrAt() == "beach":
-            on_beach = True
-            self.age += 1
-            self.hunger = self.hunger - 1
 
-        # dies quicker in the snow
-        if(self.terrAt() == "snow"):
-            self.age += 2
-            self.hunger = self.hunger - 1
+        self.hunger -= 1
+
+        speed = 3 * main.simulation_speed
+        if (self.terrAt() == "snow"):
+            speed = 1 * main.simulation_speed
+
+        self.move(random.randrange(-speed, speed + 1), random.randrange(-speed, speed + 1))
 
         if(self.years()) > 3:
             if random.randrange(0, 50) == 0:
-
                 xx = random.randrange(-3, 3) + self.world_x()
                 yy = random.randrange(-3, 3) + self.world_y()
-                if(xx != 0 and yy != 0) and not on_beach:
+                if(xx != 0 and yy != 0):
                     main.world.spawnObjectAt(Chicken(), xx, yy)
                     print("generating new chicken at", xx, ", ", yy)
 

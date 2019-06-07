@@ -19,9 +19,11 @@ class Sprite:
         self.y = y
 
     def update(self):
+        if(self.terrAt() == "out"):
+            self.alive = False
         self.age += 1
         if self.alive:
-            main.world_surface.blit(self.surface, (self.x , self.y) )
+            main.world_surface.blit(self.surface, (self.x, self.y))
 
     def world_x(self):
         return int(self.x // 8)
@@ -41,31 +43,40 @@ class Sprite:
         return(main.world.terrainAt(xx, yy))
 
     def move(self, x_mod, y_mod):
-        for x1 in range(0, x_mod):
-            for y1 in range(0, y_mod):
-                terr = self.terrAt(toWorldPoint(self.x + x1), toWorldPoint(self.y + y1))
-                if terr != "water":
-                    self.x = x1
-                    self.y = y1
-        # dont go out of bounds
-        self.x = max(self.x, 0)
-        self.x = min(self.x, main.width)
-        self.y = max(self.x, 0)
-        self.y = min(self.x, main.height)
+        farthest_x = 0
+        farthest_y = 0
+        x1 = 0
+        y1 = 0
+        while x1 != x_mod and y1 != y_mod:
+            new_x = toWorldPoint(self.x + x1)
+            new_y = toWorldPoint(self.y + y1)
+            terr = self.terrAt(new_x, new_y)
+            if terr != "water" and terr != "out":
+                farthest_x = x1
+                farthest_y = y1
+            if(x1 < x_mod):
+                x1 += 1
+            elif x1 > x_mod:
+                x1 -= 1
+            if(y1 < y_mod):
+                y1 += 1
+            elif y1 > y_mod:
+                y1 -= 1
+        self.x += farthest_x
+        self.y += farthest_y
 
     def objectsInRange(self, ran):
-        print("objects in range ", ran)
         wx = self.world_x()
         wy = self.world_y()
         objs = []
         for r in range(1, ran + 1):
             xx = r
             for yy in range(0, r):
-                print(wx + xx, wy + yy)
+                0
                 if(xx != 0):
-                    print(wx - xx, wy + yy)
+                    0
                 if(yy != 0):
-                    print(wx + xx, wy - yy)
+                    0
                     if(xx != 0):
-                        print(wx - xx, wy - yy)
+                        0
                 xx -= 1

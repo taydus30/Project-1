@@ -41,6 +41,8 @@ class World:
         return(self.terrain[x][y])
 
     def terrainAt(self, x, y):
+        if(x >= len(self.terrain) or y >= len(self.terrain[0]) or x < 0 or y < 0):
+            return("out")
         height = self.terrain[x][y]
         if height < 0.46:
             return("water")

@@ -59,7 +59,8 @@ def drawTerrain():
     for x in range(len(main.world.terrain)):
         for y in range(len(main.world.terrain[0])):
             color = main.world.colorAt(x, y)
-            pygame.draw.rect(terrain_surface, color, pygame.Rect(x*8 + main.x, y*8 + main.y, 8, 8))
+            rect = pygame.Rect(x*8 + main.x, y*8 + main.y, 8, 8)
+            pygame.draw.rect(terrain_surface, color, rect)
 
 
 main.init()

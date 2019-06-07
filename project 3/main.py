@@ -26,7 +26,7 @@ def init():
     x = 0
     y = 0
 
-    (width, height) = (1280, 720)
+    (width, height) = (640, 640)
 
     world_surface = pygame.Surface((width, height))
     world = World(width // 8, height // 8)
