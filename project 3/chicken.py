@@ -69,7 +69,7 @@ class Chicken(Sprite):
         self.move(target_x, target_y)
 
         if(self.years()) > 3 and self.hunger > 300:
-            if random.randrange(0, 150 * main.simulation_speed) == 0:
+            if random.randrange(0, 100 * main.simulation_speed) == 0:
                 xx = random.randrange(-3, 3) + self.world_x()
                 yy = random.randrange(-3, 3) + self.world_y()
                 if(xx != 0 and yy != 0):
