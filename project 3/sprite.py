@@ -31,3 +31,34 @@ class Sprite:
     def terrAt(self):
         #simple func for shortening code
         return(main.world.terrainAt(self.world_x(), self.world_y()))
+
+    def objectInRange(self, range):
+        objects = []
+        for i in range(range):
+            obj = main.world.objectAt(self.world_x() + i, self.world_y())
+            if obj != None:
+                objects.append(obj)
+            obj = main.world.objectAt(self.world_x(), self.world_y() + i)
+            if obj != None:
+                objects.append(obj)
+            obj = main.world.objectAt(self.world_x() - i, self.world_y())
+            if obj != None:
+                objects.append(obj)
+            obj = main.world.objectAt(self.world_x(), self.world_y() - i)
+            if obj != None:
+                objects.append(obj)
+
+            if (i - 1) != 0:
+                obj = main.world.objectAt(self.world_x() + (i - 1), self.world_y() + (i - 1))
+                if obj != None:
+                    objects.append(obj)
+                obj = main.world.objectAt(self.world_x() + (i - 1), self.world_y() - (i - 1))
+                if obj != None:
+                    objects.append(obj)
+                obj = main.world.objectAt(self.world_x() - (i - 1), self.world_y() - (i - 1))
+                if obj != None:
+                    objects.append(obj)
+                obj = main.world.objectAt(self.world_x() - (i - 1), self.world_y() + (i - 1))
+                if obj != None:
+                    objects.append(obj)
+        return(objects)
