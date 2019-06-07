@@ -4,6 +4,7 @@ import random
 import tree
 import main
 import berry_bush
+import chicken
 
 class World:
 
@@ -87,4 +88,5 @@ class World:
     def spawnWorldObjects(self):
         tree.spawnInWorld()
         berry_bush.spawnInWorld()
+        chicken.spawnInWorld()
         print("generated world objects")
