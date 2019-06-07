@@ -35,6 +35,7 @@ class World:
         for obj in self.objects:
             if obj.alive:
                 obj.update()
+        self.objects[1].objectsInRange(3)
 
     def heightAt(self, x, y):
         return(self.terrain[x][y])

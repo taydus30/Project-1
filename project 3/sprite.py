@@ -53,33 +53,19 @@ class Sprite:
         self.y = max(self.x, 0)
         self.y = min(self.x, main.height)
 
-    def objectInRange(self, range):
-        objects = []
-        for i in range(range):
-            obj = main.world.objectAt(self.world_x() + i, self.world_y())
-            if obj != None:
-                objects.append(obj)
-            obj = main.world.objectAt(self.world_x(), self.world_y() + i)
-            if obj != None:
-                objects.append(obj)
-            obj = main.world.objectAt(self.world_x() - i, self.world_y())
-            if obj != None:
-                objects.append(obj)
-            obj = main.world.objectAt(self.world_x(), self.world_y() - i)
-            if obj != None:
-                objects.append(obj)
-
-            if (i - 1) != 0:
-                obj = main.world.objectAt(self.world_x() + (i - 1), self.world_y() + (i - 1))
-                if obj != None:
-                    objects.append(obj)
-                obj = main.world.objectAt(self.world_x() + (i - 1), self.world_y() - (i - 1))
-                if obj != None:
-                    objects.append(obj)
-                obj = main.world.objectAt(self.world_x() - (i - 1), self.world_y() - (i - 1))
-                if obj != None:
-                    objects.append(obj)
-                obj = main.world.objectAt(self.world_x() - (i - 1), self.world_y() + (i - 1))
-                if obj != None:
-                    objects.append(obj)
-        return(objects)
+    def objectsInRange(self, ran):
+        print("objects in range ", ran)
+        wx = self.world_x()
+        wy = self.world_y()
+        objs = []
+        for r in range(1, ran + 1):
+            xx = r
+            for yy in range(0, r):
+                print(wx + xx, wy + yy)
+                if(xx != 0):
+                    print(wx - xx, wy + yy)
+                if(yy != 0):
+                    print(wx + xx, wy - yy)
+                    if(xx != 0):
+                        print(wx - xx, wy - yy)
+                xx -= 1
