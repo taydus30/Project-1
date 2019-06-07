@@ -8,7 +8,7 @@ def spawnInWorld():
         for y in range(main.world.height):
             # wolf generation
             if main.world.terrainAt(x, y) == "grass":
-                if random.randrange(0, 100) == 0:
+                if random.randrange(0, 200) == 0:
                     wo = Wolf()
                     wo.x = x * 8
                     wo.y = y * 8
