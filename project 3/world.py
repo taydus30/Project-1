@@ -76,6 +76,20 @@ class World:
         # alive to false to show its eaten
         return(out)
 
+    def objectsAt(self, x, y):
+        out = []
+        for obj in self.objects:
+            if(obj.world_x() == x and obj.world_y() == y):
+                out.append(obj)
+        return(out)
+
+    def objectOfIdAt(self, id, x, y):
+        out = None
+        for obj in self.objects:
+            if(obj.world_x() == x and obj.world_y() == y and obj.id == id):
+                out = obj
+        return(out)
+
     def spawnObjectAt(self, object, world_x, world_y):
         # don't spawn if an object would overlap
         if self.objectAt(world_x, world_y) is not None:

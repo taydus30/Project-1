@@ -26,23 +26,43 @@ class Chicken(Sprite):
         super().__init__('chicken.png')
         self.alive = True
         self.death_tolerance = random.randrange(0, 4)
-        self.hunger = 1000
+        self.hunger = 300
 
     def update(self):
-        # if this is somehow in water, it should not be alive
+        # if this is in water, it should not be alive
         if self.terrAt() == "water":
             self.alive = False
         super().update()
         if self.alive is False:
             return
 
+        o = main.world.objectOfIdAt("berry bush", self.world_x(), self.world_y())
+        if o is not None:
+            if o.id == "berry bush" and o.alive:
+                print("eating")
+                self.hunger += 201
+                # eat bush
+                o.alive = False
         self.hunger -= 1
 
         speed = 3 * main.simulation_speed
         if (self.terrAt() == "snow"):
             speed = 1 * main.simulation_speed
+        target_x = random.randrange(-speed, speed + 1)
+        target_y = random.randrange(-speed, speed + 1)
+        # find food
+        for obj in self.objectsInRange(3):
+            if obj.id == "berry bush" and obj.alive:
+                if obj.x > self.x:
+                    target_x = speed + 1
+                elif obj.x < self.x:
+                    target_x = -speed - 1
+                if obj.y > self.y:
+                    target_y = speed + 1
+                elif obj.y < self.y:
+                    target_y = -speed - 1
 
-        self.move(random.randrange(-speed, speed + 1), random.randrange(-speed, speed + 1))
+        self.move(target_x, target_y)
 
         if(self.years()) > 3:
             if random.randrange(0, 50) == 0:
