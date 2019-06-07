@@ -4,6 +4,7 @@ import time
 import main
 
 
+
 def update():
     main.world_surface.fill((255,255,255))
     main.world_surface.blit(terrain_surface, (0,0))
@@ -42,7 +43,7 @@ def gameEvent():
                 pygame.quit()
                 quit()
 
-        #stuff on key lift
+        # stuff on key lift
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_UP:
                 main.move_y = 0
@@ -59,6 +60,7 @@ def drawTerrain():
         for y in range(len(main.world.terrain[0])):
             color = main.world.colorAt(x, y)
             pygame.draw.rect(terrain_surface, color, pygame.Rect(x*8 + main.x, y*8 + main.y, 8, 8))
+
 
 main.init()
 terrain_surface = pygame.Surface((main.width, main.height))

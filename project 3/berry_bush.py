@@ -45,7 +45,7 @@ class Berry_Bush(Sprite):
             self.age += 1
 
         if(self.years()) > 3:
-            if random.randrange(0, 20) == 0:
+            if random.randrange(0, 100) == 0:
 
                 xx = random.randrange(-3, 3) + self.world_x()
                 yy = random.randrange(-3, 3) + self.world_y()

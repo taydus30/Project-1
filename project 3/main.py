@@ -17,7 +17,7 @@ def init():
     global width
     global height
 
-    simulation_speed = 10
+    simulation_speed = 1
     zoom = 8
 
     move_x = 0
@@ -27,7 +27,7 @@ def init():
     y = 0
 
     (width, height) = (1280, 720)
-    
+
     world_surface = pygame.Surface((width, height))
     world = World(width // 8, height // 8)
     world.spawnWorldObjects()
@@ -36,7 +36,7 @@ def init():
     pygame.font.init()
     font = pygame.font.SysFont('Arial', 16)
 
-    screen = pygame.display.set_mode((width, height), depth=32)
+    screen = pygame.display.set_mode((width, height))
     world_surface = screen
     pygame.display.flip()
     pygame.display.set_caption("project 3")
