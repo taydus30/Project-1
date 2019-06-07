@@ -24,6 +24,8 @@ class Sprite:
         self.age += 1
         if self.alive:
             main.world_surface.blit(self.surface, (self.x, self.y))
+        else:
+            main.world.objects.remove(self)
 
     def world_x(self):
         return int(self.x // 8)
@@ -65,6 +67,10 @@ class Sprite:
         self.x += farthest_x
         self.y += farthest_y
 
+    def distance(self, sprite):
+        dist = ((sprite.x - self.x)**2 + (sprite.y - self.y)**2) ** 0.5
+        return(dist)
+
     def objectsInRange(self, ran):
         wx = self.world_x()
         wy = self.world_y()
@@ -85,6 +91,31 @@ class Sprite:
                         objs.append(obj)
                     if(xx != 0):
                         obj = main.world.objectAt(wx - xx, wy - yy)
+                        if obj is not None:
+                            objs.append(obj)
+                xx -= 1
+        return(objs)
+
+    def objectsOfIdInRange(self, id, ran):
+        wx = self.world_x()
+        wy = self.world_y()
+        objs = []
+        for r in range(1, ran + 1):
+            xx = r
+            for yy in range(0, r):
+                obj = main.world.objectOfIdAt(id, wx + xx, wy + yy)
+                if obj is not None:
+                    objs.append(obj)
+                if(xx != 0):
+                    obj = main.world.objectOfIdAt(id, wx - xx, wy + yy)
+                    if obj is not None:
+                        objs.append(obj)
+                if(yy != 0):
+                    obj = main.world.objectOfIdAt(id, wx + xx, wy - yy)
+                    if obj is not None:
+                        objs.append(obj)
+                    if(xx != 0):
+                        obj = main.world.objectOfIdAt(id, wx - xx, wy - yy)
                         if obj is not None:
                             objs.append(obj)
                 xx -= 1

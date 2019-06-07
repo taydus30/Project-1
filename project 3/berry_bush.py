@@ -51,8 +51,6 @@ class Berry_Bush(Sprite):
                 yy = random.randrange(-3, 3) + self.world_y()
                 if(xx != 0 and yy != 0) and not on_beach:
                     main.world.spawnObjectAt(Berry_Bush(), xx, yy)
-                    print("generating new berry bush at", xx, ", ", yy)
 
         if self.years() > 8 + self.death_tolerance:
             self.alive = False
-            print("berry bush died")

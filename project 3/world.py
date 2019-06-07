@@ -31,11 +31,12 @@ class World:
         years = self.age // (60 / main.simulation_speed)
         if years > self.curr_year:
             self.curr_year += 1
-            print("year ", years)
+            print("year ", years, "total objects: ", len(self.objects))
         for obj in self.objects:
             if obj.alive:
                 obj.update()
-        self.objects[1].objectsInRange(3)
+            else:
+                self.objects.remove(obj)
 
     def heightAt(self, x, y):
         return(self.terrain[x][y])
