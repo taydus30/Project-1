@@ -8,7 +8,7 @@ def spawnInWorld():
         for y in range(main.world.height):
             # bush generation
             if main.world.terrainAt(x, y) == "grass":
-                if random.randrange(0, 40) == 0:
+                if random.randrange(0, 30) == 0:
                     bb = Berry_Bush()
                     bb.x = x * 8
                     bb.y = y * 8
