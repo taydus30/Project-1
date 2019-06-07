@@ -73,6 +73,7 @@ class World:
         for obj in self.objects:
             if(obj.world_x() == x and obj.world_y() == y):
                 out = obj
+                return(out)
         # we want to return the object if one is there
         # ie if an animal is looking at nearby objects for food it would set
         # alive to false to show its eaten
@@ -90,6 +91,7 @@ class World:
         for obj in self.objects:
             if(obj.world_x() == x and obj.world_y() == y and obj.id == id):
                 out = obj
+                return(out)
         return(out)
 
     def spawnObjectAt(self, object, world_x, world_y):

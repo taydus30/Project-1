@@ -43,10 +43,12 @@ class Chicken(Sprite):
             speed = 3 * main.simulation_speed
         target_x = random.randrange(-speed, speed + 1)
         target_y = random.randrange(-speed, speed + 1)
-
+        food_range = 3
+        if self.hunger < 200:
+            food_range = 6
         if self.hunger < 600:
             # find food
-            objs = self.objectsOfIdInRange("berry bush", 3)
+            objs = self.objectsOfIdInRange("berry bush", food_range)
             if objs != []:
                 d = 9999
                 oo = None
