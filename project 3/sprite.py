@@ -72,11 +72,20 @@ class Sprite:
         for r in range(1, ran + 1):
             xx = r
             for yy in range(0, r):
-                0
+                obj = main.world.objectAt(wx + xx, wy + yy)
+                if obj is not None:
+                    objs.append(obj)
                 if(xx != 0):
-                    0
+                    obj = main.world.objectAt(wx - xx, wy + yy)
+                    if obj is not None:
+                        objs.append(obj)
                 if(yy != 0):
-                    0
+                    obj = main.world.objectAt(wx + xx, wy - yy)
+                    if obj is not None:
+                        objs.append(obj)
                     if(xx != 0):
-                        0
+                        obj = main.world.objectAt(wx - xx, wy - yy)
+                        if obj is not None:
+                            objs.append(obj)
                 xx -= 1
+        return(objs)
