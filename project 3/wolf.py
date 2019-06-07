@@ -8,7 +8,7 @@ def spawnInWorld():
         for y in range(main.world.height):
             # wolf generation
             if main.world.terrainAt(x, y) == "grass":
-                if random.randrange(0, 200) == 0:
+                if random.randrange(0, 300) == 0:
                     wo = Wolf()
                     wo.x = x * 8
                     wo.y = y * 8
@@ -38,9 +38,9 @@ class Wolf(Sprite):
 
         self.hunger -= 1 * main.simulation_speed
 
-        speed = 5 * main.simulation_speed
+        speed = 6 * main.simulation_speed
         if (self.terrAt() == "snow"):
-            speed = 3 * main.simulation_speed
+            speed = 5 * main.simulation_speed
         target_x = random.randrange(-speed, speed + 1)
         target_y = random.randrange(-speed, speed + 1)
 
@@ -54,7 +54,7 @@ class Wolf(Sprite):
                     d = self.distance(obj)
                     oo = obj
                 if self.distance(obj) < 16:
-                    self.hunger += 201 * main.simulation_speed
+                    self.hunger += 300 * main.simulation_speed
                     obj.alive = False
             if oo.x > self.x:
                 target_x = speed + 1
@@ -67,12 +67,12 @@ class Wolf(Sprite):
 
         self.move(target_x, target_y)
 
-        if(self.years()) > 3:
+        if(self.years()) > 3 and self.hunger > 100:
             if random.randrange(0, 150 * main.simulation_speed) == 0:
                 xx = random.randrange(-3, 3) + self.world_x()
                 yy = random.randrange(-3, 3) + self.world_y()
                 if(xx != 0 and yy != 0):
-                    main.world.spawnObjectAt(Chicken(), xx, yy)
+                    main.world.spawnObjectAt(Wolf(), xx, yy)
 
         if self.years() > 6 + self.death_tolerance:
             self.alive = False
