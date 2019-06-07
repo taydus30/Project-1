@@ -67,8 +67,10 @@ main.init()
 terrain_surface = pygame.Surface((main.width, main.height))
 drawTerrain()
 running = True
+global clock
+clock = pygame.time.Clock()
 while running:
-    time.sleep(1/60)
+    dt = clock.tick(30)
     main.screen.fill((255, 255, 255))
     update()
     scale_location = (main.x * main.zoom, main.y * main.zoom)

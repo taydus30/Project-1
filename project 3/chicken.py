@@ -44,30 +44,31 @@ class Chicken(Sprite):
         target_x = random.randrange(-speed, speed + 1)
         target_y = random.randrange(-speed, speed + 1)
 
-        # find food
-        objs = self.objectsOfIdInRange("berry bush", 3)
-        if objs != []:
-            d = 9999
-            oo = None
-            for obj in objs:
-                if self.distance(obj) < d:
-                    d = self.distance(obj)
-                    oo = obj
-                if self.distance(obj) < 16:
-                    self.hunger += 201 * main.simulation_speed
-                    obj.alive = False
-            if oo.x > self.x:
-                target_x = speed + 1
-            elif oo.x < self.x:
-                target_x = -speed - 1
-            if oo.y > self.y:
-                target_y = speed + 1
-            elif oo.y < self.y:
-                target_y = -speed - 1
+        if self.hunger < 600:
+            # find food
+            objs = self.objectsOfIdInRange("berry bush", 3)
+            if objs != []:
+                d = 9999
+                oo = None
+                for obj in objs:
+                    if self.distance(obj) < d:
+                        d = self.distance(obj)
+                        oo = obj
+                    if self.distance(obj) < 16:
+                        self.hunger += 201 * main.simulation_speed
+                        obj.alive = False
+                if oo.x > self.x:
+                    target_x = speed + 1
+                elif oo.x < self.x:
+                    target_x = -speed - 1
+                if oo.y > self.y:
+                    target_y = speed + 1
+                elif oo.y < self.y:
+                    target_y = -speed - 1
 
         self.move(target_x, target_y)
 
-        if(self.years()) > 3:
+        if(self.years()) > 3 and self.hunger > 300:
             if random.randrange(0, 150 * main.simulation_speed) == 0:
                 xx = random.randrange(-3, 3) + self.world_x()
                 yy = random.randrange(-3, 3) + self.world_y()
