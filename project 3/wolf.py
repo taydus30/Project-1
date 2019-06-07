@@ -15,7 +15,7 @@ def spawnInWorld():
                     main.world.spawnObjectAt(wo, x, y)
 
 
-class Chicken(Sprite):
+class Wolf(Sprite):
 
     type: str = "Animal"
     id:   str = "wolf"
@@ -45,7 +45,7 @@ class Chicken(Sprite):
         target_y = random.randrange(-speed, speed + 1)
 
         # find food
-        objs = self.objectsOfIdInRange("chicken", 3)
+        objs = self.objectsOfIdInRange("chicken", 5)
         if objs != []:
             d = 9999
             oo = None

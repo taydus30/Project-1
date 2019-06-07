@@ -5,6 +5,7 @@ import tree
 import main
 import berry_bush
 import chicken
+import wolf
 
 class World:
 
@@ -107,4 +108,5 @@ class World:
         tree.spawnInWorld()
         berry_bush.spawnInWorld()
         chicken.spawnInWorld()
+        wolf.spawnInWorld()
         print("generated world objects")
